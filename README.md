@@ -22,28 +22,28 @@ respuesta ejemplo de peticion get a ip:puerto/v1/project:
 - /project
   - GET: devuelve los proyectos que hay en la BD
   - POST: crea un nuevo proyecto a partir de los datos del body en la solicitud
-- /project/<id>
+- /project/[id]
   - GET: devuelve el proyecto correspondiente a la id
   - PATCH: actualiza los datos del proyecto correspondiente a la id
   - DELETE: borra el proyecto correspondiente a la id
-- /project/<id>/iteration
+- /project/[id]/iteration
   - GET: devuelve las iteraciones que hay en la BD segun el proyecto correspondiente a la id
   - POST: crea una nueva iteracion a partir de los datos del body en la solicitud
-- /project/<id>/iteration/<id2>
+- /project/[id]/iteration/[id2]
   - GET: devuelve la iteracion correspondiente a la id2
   - PATCH: actualiza los datos de la iteracion correspondiente a la id2
   - DELETE: borra la iteracion correspondiente a la id2
-- /project/<id>/requirement
+- /project/[id]/requirement
   - GET: devuelve los requerimientos que hay en la BD segun el proyecto correspondiente a la id
   - POST: crea un nuevo requerimiento a partir de los datos del body en la solicitud
-- /project/<id>/requirement/<id2>
+- /project/[id]/requirement/[id2]
   - GET: devuelve el requerimiento correspondiente a la id2
   - PATCH: actualiza los datos de el requerimiento correspondiente a la id2
   - DELETE: borra el requerimiento correspondiente a la id2
-- /project/<id>/member
+- /project/[id]/member
   - GET: devuelve los integrantes que hay en la BD segun el proyecto correspondiente a la id
   - POST: crea un nuevo integrante a partir de los datos del body en la solicitud
-- /project/<id>/member/<id2>
+- /project/[id]/member/[id2]
   - GET: devuelve el integrante correspondiente a la id2
   - PATCH: actualiza los datos de el integrante correspondiente a la id2
   - DELETE: borra el integrante correspondiente a la id2
