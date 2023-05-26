@@ -3,6 +3,7 @@ para acceder a los endpoints se deve usar /v1 en la ruta
 # End Points
 
 respuesta ejemplo de peticion get a ip:puerto/v1/project:
+</code>
 {
   "error":null,
   "data":[
@@ -16,6 +17,7 @@ respuesta ejemplo de peticion get a ip:puerto/v1/project:
   "status":200,
   "statusText":"OK"
 }
+</code>
 
 - /project
   - GET: devuelve los proyectos que hay en la BD
