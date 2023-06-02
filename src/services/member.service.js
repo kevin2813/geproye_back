@@ -1,7 +1,5 @@
 const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
-const supabase = require('../utils/db');
-const logger = require('../config/logger');
 
 /**
  * Create a member
@@ -9,6 +7,7 @@ const logger = require('../config/logger');
  * @returns {Promise<Member>}
  */
 const createMember = async (memberBody) => {
+  const supabase = await require('../utils/db');
   const result = await supabase.from('integrantes').insert(memberBody).select();
   if (result.error) return result.error;
   return result;
@@ -24,6 +23,7 @@ const createMember = async (memberBody) => {
  * @returns {Promise<QueryResult>}
  */
 const getMembers = async (projectId) => {
+  const supabase = await require('../utils/db');
   const result = await supabase.from('integrantes').select().eq('projectId', projectId);
   if (result.error) return result.error;
   return result;
@@ -35,6 +35,7 @@ const getMembers = async (projectId) => {
  * @returns {Promise<Member>}
  */
 const getMemberById = async (id) => {
+  const supabase = await require('../utils/db');
   const result = await supabase.from('integrantes').select().eq('id', id);
   if (result.error) return result.error;
   return result;
@@ -47,6 +48,7 @@ const getMemberById = async (id) => {
  * @returns {Promise<Member>}
  */
 const updateMemberById = async (memberId, updateBody) => {
+  const supabase = await require('../utils/db');
   const { data } = await getMemberById(memberId);
   if (!data) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Member not found');
@@ -62,6 +64,7 @@ const updateMemberById = async (memberId, updateBody) => {
  * @returns {Promise<Member>}
  */
 const deleteMemberById = async (memberId) => {
+  const supabase = await require('../utils/db');
   const { data } = await getMemberById(memberId);
   if (!data) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Member not found');

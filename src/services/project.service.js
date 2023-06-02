@@ -1,6 +1,5 @@
 const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
-const supabase = require('../utils/db')
 
 /**
  * Create a project
@@ -8,6 +7,7 @@ const supabase = require('../utils/db')
  * @returns {Promise<Project>}
  */
 const createProject = async (projectBody) => {
+  const supabase = await require('../utils/db');
   const result = await supabase.from('proyectos').insert(projectBody).select();
   if (result.error) return result.error;
   return result;
@@ -23,6 +23,7 @@ const createProject = async (projectBody) => {
  * @returns {Promise<QueryResult>}
  */
 const getProjects = async () => {
+  const supabase = await require('../utils/db');
   const result = await supabase.from('proyectos').select();
   if (result.error) return result.error;
   return result;
@@ -34,6 +35,7 @@ const getProjects = async () => {
  * @returns {Promise<Project>}
  */
 const getProjectById = async (id) => {
+  const supabase = await require('../utils/db');
   const result = await supabase.from('proyectos').select().eq('id', id);
   if (result.error) return result.error;
   return result;
@@ -46,6 +48,7 @@ const getProjectById = async (id) => {
  * @returns {Promise<Project>}
  */
 const updateProjectById = async (projectId, updateBody) => {
+  const supabase = await require('../utils/db');
   const { data } = await getProjectById(projectId);
   if (!data) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Project not found');
@@ -61,6 +64,7 @@ const updateProjectById = async (projectId, updateBody) => {
  * @returns {Promise<Project>}
  */
 const deleteProjectById = async (projectId) => {
+  const supabase = await require('../utils/db');
   const { data } = await getProjectById(projectId);
   if (!data) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Project not found');

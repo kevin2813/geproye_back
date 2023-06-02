@@ -1,6 +1,5 @@
 const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
-const supabase = require('../utils/db')
 
 /**
  * Create a iteration
@@ -8,6 +7,7 @@ const supabase = require('../utils/db')
  * @returns {Promise<Iteration>}
  */
 const createIteration = async (iterationBody) => {
+  const supabase = await require('../utils/db');
   const result = await supabase.from('iteraciones').insert(iterationBody).select();
   if (result.error) return result.error;
   return result;
@@ -23,6 +23,7 @@ const createIteration = async (iterationBody) => {
  * @returns {Promise<QueryResult>}
  */
 const getIterations = async (projectId) => {
+  const supabase = await require('../utils/db');
   const result = await supabase.from('iteraciones').select().eq('projectId', projectId);
   if (result.error) return result.error;
   return result;
@@ -34,6 +35,7 @@ const getIterations = async (projectId) => {
  * @returns {Promise<Iteration>}
  */
 const getIterationById = async (id) => {
+  const supabase = await require('../utils/db');
   const result = await supabase.from('iteraciones').select().eq('id', id);
   if (result.error) return result.error;
   return result;
@@ -46,6 +48,7 @@ const getIterationById = async (id) => {
  * @returns {Promise<Iteration>}
  */
 const updateIterationById = async (iterationId, updateBody) => {
+  const supabase = await require('../utils/db');
   const { data } = await getIterationById(iterationId);
   if (!data) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Iteration not found');
@@ -61,6 +64,7 @@ const updateIterationById = async (iterationId, updateBody) => {
  * @returns {Promise<Iteration>}
  */
 const deleteIterationById = async (iterationId) => {
+  const supabase = await require('../utils/db');
   const { data } = await getIterationById(iterationId);
   if (!data) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Iteration not found');

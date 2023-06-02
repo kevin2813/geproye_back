@@ -1,6 +1,7 @@
 const express = require('express');
-const projectRoute = require('./project.route');
 const config = require('../../config/config');
+const projectRoute = require('./project.route');
+const discoverRoute = require('./discover.route');
 
 const router = express.Router();
 
@@ -8,6 +9,10 @@ const defaultRoutes = [
   {
     path: '/project',
     route: projectRoute,
+  },
+  {
+    path: '/discover',
+    route: discoverRoute,
   },
 ];
 

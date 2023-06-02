@@ -1,6 +1,5 @@
 const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
-const supabase = require('../utils/db')
 
 /**
  * Create a requirement
@@ -8,6 +7,7 @@ const supabase = require('../utils/db')
  * @returns {Promise<Requirement>}
  */
 const createRequirement = async (requirementBody) => {
+  const supabase = await require('../utils/db');
   const result = await supabase.from('requerimientos').insert(requirementBody).select();
   if (result.error) return result.error;
   return result;
@@ -23,6 +23,7 @@ const createRequirement = async (requirementBody) => {
  * @returns {Promise<QueryResult>}
  */
 const getRequirements = async (projectId) => {
+  const supabase = await require('../utils/db');
   const result = await supabase.from('requerimientos').select().eq('projectId', projectId);
   if (result.error) return result.error;
   return result;
@@ -34,6 +35,7 @@ const getRequirements = async (projectId) => {
  * @returns {Promise<Requirement>}
  */
 const getRequirementById = async (id) => {
+  const supabase = await require('../utils/db');
   const result = await supabase.from('requerimientos').select().eq('id', id);
   if (result.error) return result.error;
   return result;
@@ -46,6 +48,7 @@ const getRequirementById = async (id) => {
  * @returns {Promise<Requirement>}
  */
 const updateRequirementById = async (requirementId, updateBody) => {
+  const supabase = await require('../utils/db');
   const { data } = await getRequirementById(requirementId);
   if (!data) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Requirement not found');
@@ -61,6 +64,7 @@ const updateRequirementById = async (requirementId, updateBody) => {
  * @returns {Promise<Requirement>}
  */
 const deleteRequirementById = async (requirementId) => {
+  const supabase = await require('../utils/db');
   const { data } = await getRequirementById(requirementId);
   if (!data) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Requirement not found');

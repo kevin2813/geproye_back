@@ -42,4 +42,6 @@ app.use(errorConverter);
 // handle error
 app.use(errorHandler);
 
+app.set('chatUsers', []);
+
 module.exports = app;

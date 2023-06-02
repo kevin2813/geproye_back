@@ -13,6 +13,7 @@ const envVarsSchema = Joi.object()
     SUPABASE_API_URL2: Joi.string().required().description('Supabase API Url'),
     SUPABASE_API_KEY: Joi.string().required().description('Supabase API Key'),
     SUPABASE_API_KEY2: Joi.string().required().description('Supabase API Key'),
+    SUPABASE_RETRY_TIME_OUT_MS: Joi.number().description('Supabase wait time for retry').default(2000)
   })
   .unknown();
 
@@ -30,5 +31,6 @@ module.exports = {
     key: envVars.SUPABASE_API_KEY,
     url2: envVars.SUPABASE_API_URL2,
     key2: envVars.SUPABASE_API_KEY2,
+    retryTimeOutMs: envVars.SUPABASE_RETRY_TIME_OUT_MS
   },
 };
