@@ -7,7 +7,6 @@ dotenv.config({ path: path.join(__dirname, '../../.env') });
 const envVarsSchema = Joi.object()
   .keys({
     NODE_ENV: Joi.string().valid('production', 'development', 'test').required(),
-    PORT: Joi.number().default(3000),
     //  MONGODB_URL: Joi.string().required().description('Mongo DB url'),
     SUPABASE_API_URL: Joi.string().required().description('Supabase API Url'),
     SUPABASE_API_URL2: Joi.string().required().description('Supabase API Url'),
@@ -25,7 +24,6 @@ if (error) {
 
 module.exports = {
   env: envVars.NODE_ENV,
-  port: envVars.PORT,
   supabase: {
     url: envVars.SUPABASE_API_URL,
     key: envVars.SUPABASE_API_KEY,

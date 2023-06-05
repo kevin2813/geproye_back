@@ -45,8 +45,8 @@ app.use(errorHandler);
 
 app.set('chatUsers', []);
 
-const server = app.listen(config.port, () => {
-  logger.info(`Listening to port ${config.port}`);
+const server = app.listen(process.env.port, () => {
+  logger.info(`Listening to port ${process.env.port}`);
 });
 
 module.exports = app;
