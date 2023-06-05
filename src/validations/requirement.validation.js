@@ -30,12 +30,14 @@ const getRequirements = {
 
 const getRequirement = {
   params: Joi.object().keys({
+    projectId: Joi.number().integer(),
     requirementId: Joi.number().integer(),
   }),
 };
 
 const updateRequirement = {
   params: Joi.object().keys({
+    projectId: Joi.number().integer(),
     requirementId: Joi.number().integer(),
   }),
   body: Joi.object()
@@ -48,6 +50,7 @@ const updateRequirement = {
 
 const deleteRequirement = {
   params: Joi.object().keys({
+    projectId: Joi.number().integer(),
     requirementId: Joi.number().integer(),
   }),
 };

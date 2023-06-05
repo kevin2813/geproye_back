@@ -30,12 +30,14 @@ const getMembers = {
 
 const getMember = {
   params: Joi.object().keys({
+    projectId: Joi.number().integer(),
     memberId: Joi.number().integer(),
   }),
 };
 
 const updateMember = {
   params: Joi.object().keys({
+    projectId: Joi.number().integer(),
     memberId: Joi.number().integer(),
   }),
   body: Joi.object()
@@ -48,6 +50,7 @@ const updateMember = {
 
 const deleteMember = {
   params: Joi.object().keys({
+    projectId: Joi.number().integer(),
     memberId: Joi.number().integer(),
   }),
 };

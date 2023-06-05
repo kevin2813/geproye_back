@@ -7,6 +7,7 @@ const morgan = require('./config/morgan');
 const routes = require('./routes/v1');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
+const logger = require('./config/logger');
 
 const app = express();
 
@@ -43,5 +44,9 @@ app.use(errorConverter);
 app.use(errorHandler);
 
 app.set('chatUsers', []);
+
+const server = app.listen(config.port, () => {
+  logger.info(`Listening to port ${config.port}`);
+});
 
 module.exports = app;

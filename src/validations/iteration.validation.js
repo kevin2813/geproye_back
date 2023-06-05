@@ -30,12 +30,14 @@ const getIterations = {
 
 const getIteration = {
   params: Joi.object().keys({
+    projectId: Joi.number().integer(),
     iterationId: Joi.number().integer(),
   }),
 };
 
 const updateIteration = {
   params: Joi.object().keys({
+    projectId: Joi.number().integer(),
     iterationId: Joi.number().integer(),
   }),
   body: Joi.object()
@@ -48,6 +50,7 @@ const updateIteration = {
 
 const deleteIteration = {
   params: Joi.object().keys({
+    projectId: Joi.number().integer(),
     iterationId: Joi.number().integer(),
   }),
 };
